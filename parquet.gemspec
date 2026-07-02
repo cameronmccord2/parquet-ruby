@@ -1,26 +1,30 @@
 require_relative "lib/parquet/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "parquet"
+  spec.name = "parquet-tyfoom"
   spec.version = Parquet::VERSION
-  spec.authors = ["Nathan Jaremko"]
-  spec.email = ["nathan@jaremko.ca"]
+  spec.authors = ["Nathan Jaremko", "Cameron McCord"]
+  spec.email = ["nathan@jaremko.ca", "cameron.mccord@tyfoom.com"]
 
-  spec.summary = "Parquet library for Ruby, written in Rust"
+  spec.summary = "Tyfoom fork of the parquet gem (Rust), with incremental streaming writes"
   spec.description = <<-EOF
-    Parquet is a high-performance Parquet library for Ruby, written in Rust.
-    It wraps the official Apache Rust implementation to provide fast, correct Parquet parsing.
+    Tyfoom's fork of the `parquet` gem (github.com/njaremko/parquet-ruby), published while the
+    incremental streaming-write fix is pending upstream. It wraps the official Apache Rust
+    implementation and bounds write memory by streaming row groups to disk instead of buffering the
+    whole file. Drop-in compatible with the upstream gem: the library is still required as
+    `require "parquet"` and exposes the same `Parquet` API.
   EOF
-  spec.homepage = "https://github.com/njaremko/parquet-ruby"
+  spec.homepage = "https://github.com/cameronmccord2/parquet-ruby"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.1.0"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/njaremko/parquet-ruby"
-  spec.metadata["readme_uri"] = "https://github.com/njaremko/parquet-ruby/blob/main/README.md"
-  spec.metadata["changelog_uri"] = "https://github.com/njaremko/parquet-ruby/blob/main/CHANGELOG.md"
-  spec.metadata["documentation_uri"] = "https://www.rubydoc.info/gems/parquet"
+  spec.metadata["source_code_uri"] = "https://github.com/cameronmccord2/parquet-ruby"
+  spec.metadata["readme_uri"] = "https://github.com/cameronmccord2/parquet-ruby/blob/stream-writes-incrementally/README.md"
+  spec.metadata["changelog_uri"] = "https://github.com/cameronmccord2/parquet-ruby/blob/stream-writes-incrementally/CHANGELOG.md"
+  spec.metadata["documentation_uri"] = "https://www.rubydoc.info/gems/parquet-tyfoom"
   spec.metadata["funding_uri"] = "https://github.com/sponsors/njaremko"
+  spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
   spec.files =
     Dir[
